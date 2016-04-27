@@ -12,20 +12,17 @@ router.get('/', function(req, res, next) {
 //transaction history
 
 
-router.get("/api/getBalance/:id",function(req,res){
-  var id = req.params.id-1;
-  fs.readFile("./userData.json", "utf8",(err,data) =>{
+router.get("/api/getBalance/:id", function(req, res) {
+  var id = req.params.id - 1;
+  fs.readFile("./userData.json", "utf8", (err, data) => {
     if (err) throw err;
     var results = JSON.parse(data)
-    var userInfo = results.filter(function(i){
-      console.log(i.id === id)
+    var userInfo = results.filter(function(i) {
       return i.id === id
     });
-    console.log(userInfo[0].balance)
     res.send(JSON.stringify(userInfo[0].balance))
   })
 
 });
-
 
 module.exports = router;
