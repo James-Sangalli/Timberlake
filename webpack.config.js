@@ -1,6 +1,8 @@
+var webpack = require('webpack');
+
 module.exports = {
   entry: [
-    './src/index.js'
+    './src/index.jsx'
   ],
   module: {
     loaders: [{
@@ -18,6 +20,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './public',
+    hot: true
   }
 };
