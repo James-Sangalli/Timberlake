@@ -25625,7 +25625,7 @@
 	        _react2.default.createElement(
 	          'h2',
 	          null,
-	          'Hi there im transactions'
+	          'Transaction Log'
 	        )
 	      );
 	    }

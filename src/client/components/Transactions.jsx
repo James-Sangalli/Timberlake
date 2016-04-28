@@ -13,7 +13,8 @@ export default class Transactions extends Component {
   render(){
     return(
       <div>
-        <h2>Hi there im transactions</h2>
+        <h2>Transaction Log</h2>
+
       </div>
     )
   }
