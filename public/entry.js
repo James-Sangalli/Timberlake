@@ -20136,7 +20136,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'form',
-	          { method: 'post', action: '/' },
+	          { method: 'post', action: '/api/users' },
 	          _react2.default.createElement(
 	            'label',
 	            { htmlFor: 'last_name' },

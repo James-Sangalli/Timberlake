@@ -20,7 +20,7 @@ export default class Overview extends Component {
       amount: React.findDOMNode(this.refs.amount).value,
       confirmed: React.findDOMNode(this.refs.confirm).value
     }
-    //make XMLHttpRequest()
+    //make XMLHttpRequest(formData)
   }
 
   render(){

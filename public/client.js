@@ -27246,7 +27246,7 @@
 	        _react2.default.createElement(
 	          'h2',
 	          null,
-	          'Hi there im transactions'
+	          'Transaction Log'
 	        )
 	      );
 	    }
@@ -27308,7 +27308,7 @@
 	        amount: _react2.default.findDOMNode(this.refs.amount).value,
 	        confirmed: _react2.default.findDOMNode(this.refs.confirm).value
 	      };
-	      //make XMLHttpRequest()
+	      //make XMLHttpRequest(formData)
 	    }
 	  }, {
 	    key: 'render',

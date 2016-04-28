@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var fs = require("fs")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -11,34 +10,44 @@ router.get('/client', function(req, res, next) {
   res.render('client');
 });
 
-var knex = require('knex')({
-  client: 'sqlite3',
-  connection: {
-    filename: './database/dev.sqlite3'
-  },
-  useNullAsDefault: true
-})
+var config = require('../database/knexfile.js')
+var env = process.env.NODE_ENV || 'development'
+// var bcrypt = require('bcrypt')
+
+var knex = require('knex')(config[env])
 
 //transfer balance
 //transaction history
 //login
 // API SET UP
+// Shows balance of user by id
 router.get("/api/getBalance/:id", function(req, res) {
   var id = req.params.id;
 
-  knex.select('balance').from('users').innerJoin('balances', 'users.id','balances.id').where('balances.id',id)
+  knex.select('balance').from('users').innerJoin('balances', 'users.id', 'balances.id').where('balances.id', id)
     .then(function(resp) {
-      console.log(resp);
-      res.send(resp);
+      console.log(resp[0]);
+      res.send(resp[0]);
     })
 })
 
+// Shows user first and last name by id
 router.get("/api/users/:id", function(req, res) {
   var id = req.params.id;
 
-  knex.select('first_name','last_name', 'balance').from('users').innerJoin('balances', 'users.id','balances.id').where('balances.id',id)
+  knex.select('first_name', 'last_name', 'balance').from('users').innerJoin('balances', 'users.id', 'balances.id').where('balances.id', id)
     .then(function(resp) {
-      console.log(resp);
+      console.log(resp[0]);
+      res.send(resp[0]);
+    })
+})
+
+// Shows all users and their info
+router.get("/api/users/", function(req, res) {
+
+  knex.select('first_name', 'last_name', 'balance').from('users').innerJoin('balances', 'users.id', 'balances.id')
+    .then(function(resp) {
+      console.log(resp[0]);
       res.send(resp);
     })
 })
