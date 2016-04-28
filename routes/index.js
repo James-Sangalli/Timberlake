@@ -43,5 +43,4 @@ router.get("/api/users/:id", function(req, res) {
     })
 })
 
-
 module.exports = router;
