@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import request from 'superagent'
+import NavLink from './Navlink'
 
 export default class Overview extends Component {
   constructor(props){
@@ -25,8 +26,10 @@ export default class Overview extends Component {
         <h2>Hello Olliexxx</h2>
         <h3>Your balance is {this.state.balance}</h3>
         <h4>Would you like to:</h4>
-        <p>Make a payment</p>
-        <p>View transactions</p>
+        <ul role="nav">
+          <li><NavLink to="/transactions">View Transaction History</NavLink></li>
+          <li><NavLink to="/payment">Make a Payment</NavLink></li>
+        </ul>
       </div>
     )
   }

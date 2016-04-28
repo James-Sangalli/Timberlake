@@ -4,12 +4,12 @@ var fs = require("fs")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('entry', { title: 'Express' });
+  res.render('entry');
 });
 
 router.get('/client', function(req, res, next) {
-  res.render('client', { title: 'Express' });
-})
+  res.render('client');
+});
 
 var knex = require('knex')({
   client: 'sqlite3',
