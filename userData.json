@@ -1,0 +1,61 @@
+[{
+  "id": 1,
+  "first_name": "Timothy",
+  "last_name": "Frazier",
+  "password_hash": "JbwucfY",
+  "balance": 1
+}, {
+  "id": 2,
+  "first_name": "Ernest",
+  "last_name": "Burke",
+  "password_hash": "w3ibhOKMVAby",
+  "balance": 6
+}, {
+  "id": 3,
+  "first_name": "Nicole",
+  "last_name": "Roberts",
+  "password_hash": "SF6YQfFH51I",
+  "balance": 10
+}, {
+  "id": 4,
+  "first_name": "Kathy",
+  "last_name": "Adams",
+  "password_hash": "o9HsbO",
+  "balance": 5
+}, {
+  "id": 5,
+  "first_name": "Kathleen",
+  "last_name": "Little",
+  "password_hash": "VUAKST",
+  "balance": 9
+}, {
+  "id": 6,
+  "first_name": "Howard",
+  "last_name": "Harrison",
+  "password_hash": "x5z7UYWu7whH",
+  "balance": 4
+}, {
+  "id": 7,
+  "first_name": "William",
+  "last_name": "Boyd",
+  "password_hash": "5d7gh0TohCf9",
+  "balance": 13
+}, {
+  "id": 8,
+  "first_name": "Angela",
+  "last_name": "Ford",
+  "password_hash": "WWpUAeD0E",
+  "balance": 2
+}, {
+  "id": 9,
+  "first_name": "Melissa",
+  "last_name": "Hernandez",
+  "password_hash": "L17kHjNukf",
+  "balance": 6
+}, {
+  "id": 10,
+  "first_name": "Steven",
+  "last_name": "Crawford",
+  "password_hash": "MhaP2vC",
+  "balance": 4
+}]
