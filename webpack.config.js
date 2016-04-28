@@ -1,9 +1,10 @@
 var webpack = require('webpack');
 
 module.exports = {
-  entry: [
-    './src/index.jsx'
-  ],
+  entry: {
+    entry: './src/entry/index.jsx',
+    client: './src/client/index.jsx'
+  },
   module: {
     loaders: [{
       test: /\.jsx?$/,
@@ -17,7 +18,7 @@ module.exports = {
   output: {
     path: __dirname + '/public',
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   devServer: {
     contentBase: './public',
