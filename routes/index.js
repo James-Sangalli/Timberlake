@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var bcrypt = require('bcrypt')
-const saltRounds = 10
+var bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -56,15 +56,14 @@ router.post("/api/users/", function(req, res) {
   var user = { last_name: req.body.last_name }
   knex('users').where(user).then(function(result){
     var unverifiedUser = result[0]
+
     if (unverifiedUser.password_hash === req.body.password){
       req.session.userId = unverifiedUser.id
       res.redirect('/client')
     } else {
       res.redirect('/')
     }
-
   })
-
 })
 
 
