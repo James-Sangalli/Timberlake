@@ -20058,6 +20058,10 @@
 
 	var _Transactions2 = _interopRequireDefault(_Transactions);
 
+	var _Payment = __webpack_require__(227);
+
+	var _Payment2 = _interopRequireDefault(_Payment);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25561,11 +25565,41 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'form-container' },
 	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          'Hi there im Payment'
+	          'form',
+	          { method: 'post', action: '/' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-group' },
+	            _react2.default.createElement(
+	              'label',
+	              { htmlFor: 'last_name' },
+	              'Recipient'
+	            ),
+	            _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'last name', name: 'last_name' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'form-group' },
+	            _react2.default.createElement(
+	              'label',
+	              { htmlFor: 'amount' },
+	              'Amount (hours)'
+	            ),
+	            _react2.default.createElement('input', { type: 'amount', className: 'form-control spec', placeholder: '0', name: 'amount' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'checkbox' },
+	            _react2.default.createElement(
+	              'label',
+	              null,
+	              _react2.default.createElement('input', { type: 'checkbox', name: 'confirm' }),
+	              'The above information is correct'
+	            )
+	          ),
+	          _react2.default.createElement('input', { type: 'submit', className: 'btn btn-default', name: 'payment' })
 	        )
 	      );
 	    }

@@ -10,3 +10,7 @@ a {
 .active {
   color: green;
 }
+
+.form-container {
+  width: 300px;
+}
