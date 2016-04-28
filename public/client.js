@@ -25670,7 +25670,8 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Overview).call(this, props));
 
 	    _this.state = {
-	      balance: ''
+	      balance: '',
+	      name: ''
 	    };
 	    return _this;
 	  }
@@ -25678,11 +25679,12 @@
 	  _createClass(Overview, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      _superagent2.default.get('/api/getBalance/1').end(function (err, res) {
-	        console.log(res.text);
-	        var balance = JSON.parse(res.text)[0].balance;
-	        console.log(balance);
-	        this.setState({ balance: balance });
+	      _superagent2.default.get('/api/users/1').end(function (err, res) {
+	        var _JSON$parse$ = JSON.parse(res.text)[0];
+	        var first_name = _JSON$parse$.first_name;
+	        var balance = _JSON$parse$.balance;
+
+	        this.setState({ name: first_name, balance: balance });
 	      }.bind(this));
 	    }
 	  }, {
@@ -25694,7 +25696,8 @@
 	        _react2.default.createElement(
 	          'h2',
 	          null,
-	          'Hello Olliexxx'
+	          'Hello ',
+	          this.state.name
 	        ),
 	        _react2.default.createElement(
 	          'h3',

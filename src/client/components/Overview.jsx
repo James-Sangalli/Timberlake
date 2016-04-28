@@ -6,16 +6,15 @@ export default class Overview extends Component {
   constructor(props){
     super(props)
     this.state = {
-      balance: ''
+      balance: '',
+      name: ''
     }
   }
 
   componentDidMount(){
-    request.get('/api/getBalance/1').end(function(err, res){
-      console.log(res.text)
-      var balance = JSON.parse(res.text)[0].balance
-      console.log(balance)
-      this.setState({ balance: balance })
+    request.get('/api/users/1').end(function(err, res){
+      var { first_name, balance } = JSON.parse(res.text)[0]
+      this.setState({ name: first_name, balance: balance })
     }.bind(this))
 
   }
@@ -23,7 +22,7 @@ export default class Overview extends Component {
   render(){
     return(
       <div>
-        <h2>Hello Olliexxx</h2>
+        <h2>Hello {this.state.name}</h2>
         <h3>Your balance is {this.state.balance}</h3>
         <h4>Would you like to:</h4>
         <ul role="nav">
