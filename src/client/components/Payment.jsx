@@ -7,16 +7,22 @@ export default class Overview extends Component {
 
   render(){
     return(
-      <div>
+      <div className='form-container'>
         <form method='post' action='/'>
-          <label htmlFor='last_name'>Recipient</label>
-          <input type='text' placeholder='last name' name='last_name'/><br></br>
-          <label htmlFor='amount'>Amount</label>
-          <input type='amount' placeholder='0' name='amount'/>
-          <p>hours</p>
-          <label htmlFor='checkbox'>The above information is correct'</label>
-          <input type='checkbox' name='confirm'/><br></br>
-          <input type='submit' name='payment'/>
+          <div className='form-group'>
+            <label htmlFor='last_name'>Recipient</label>
+            <input type='text' className='form-control' placeholder='last name' name='last_name'/>
+          </div>
+          <div className='form-group'>
+            <label htmlFor='amount'>Amount (hours)</label>
+            <input type='amount' className='form-control spec' placeholder='0' name='amount'/>
+          </div>
+          <div className='checkbox'>
+            <label>
+              <input type='checkbox' name='confirm'/>The above information is correct
+            </label>
+          </div>
+          <input type='submit' className='btn btn-default' name='payment'/>
         </form>
       </div>
     )
