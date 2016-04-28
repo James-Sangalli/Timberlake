@@ -25650,12 +25650,24 @@
 	  function Overview(props) {
 	    _classCallCheck(this, Overview);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Overview).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Overview).call(this, props));
+
+	    _this.state = {
+	      balance: ''
+	    };
+	    return _this;
 	  }
 
 	  _createClass(Overview, [{
 	    key: 'componentDidMount',
-	    value: function componentDidMount() {}
+	    value: function componentDidMount() {
+	      _superagent2.default.get('/api/getBalance/1').end(function (err, res) {
+	        console.log(res.text);
+	        var balance = JSON.parse(res.text)[0].balance;
+	        console.log(balance);
+	        this.setState({ balance: balance });
+	      }.bind(this));
+	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -25665,12 +25677,13 @@
 	        _react2.default.createElement(
 	          'h2',
 	          null,
-	          'Hello xxx'
+	          'Hello Olliexxx'
 	        ),
 	        _react2.default.createElement(
 	          'h3',
 	          null,
-	          'Your balance is xxx'
+	          'Your balance is ',
+	          this.state.balance
 	        ),
 	        _react2.default.createElement(
 	          'h4',
