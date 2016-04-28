@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  div(class='container-fluid')
+    div(class='row' id='titles')
+      div(class='col-md-12')
+        h1 Registration
+        form(action='/users' method='POST')
+          div(class='row')
+            div(class='form-group' class='col-md-6')
+              label(for='fullname') First Name: 
+              input(type='text' name='first_name' class='form-control' placeholder="First Name")
+          div(class='row')
+            div(class='form-group' class='col-md-6')
+              label(for='email') Last Name: 
+              input(type='text' name='last_name' class='form-control' placeholder='Last Name')
+          div(class='row')
+            div(class='form-group' class='col-md-6')
+              label(for='password') Password: 
+              input(type='password' name='password' class='form-control' placeholder='Password')
+          div(class='row')
+            div(class='form-group' class='col-md-6')
+              button(class='btn btn-success') Register
