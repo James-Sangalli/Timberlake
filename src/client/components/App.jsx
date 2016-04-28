@@ -9,11 +9,11 @@ export default class Client extends Component {
 
   render(){
     return (
-      <div>
-        <div id='overview'><Overview /></div>
-
-        {this.props.children}
-
+      <div className='container'>
+        <div id='overview'>
+          <Overview />
+          {this.props.children}
+        </div>
       </div>
     )
   }
