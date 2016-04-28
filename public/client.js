@@ -20058,6 +20058,10 @@
 
 	var _Transactions2 = _interopRequireDefault(_Transactions);
 
+	var _Payment = __webpack_require__(229);
+
+	var _Payment2 = _interopRequireDefault(_Payment);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20165,8 +20169,7 @@
 	              'Make a Payment'
 	            )
 	          )
-	        ),
-	        this.props.children
+	        )
 	      );
 	    }
 	  }]);
@@ -25744,9 +25747,34 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          'Hi there im Payment'
+	          'form',
+	          { method: 'post', action: '/' },
+	          _react2.default.createElement(
+	            'label',
+	            { htmlFor: 'last_name' },
+	            'Recipient'
+	          ),
+	          _react2.default.createElement('input', { type: 'text', placeholder: 'last name', name: 'last_name' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement(
+	            'label',
+	            { htmlFor: 'amount' },
+	            'Amount'
+	          ),
+	          _react2.default.createElement('input', { type: 'amount', placeholder: '0', name: 'amount' }),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            'hours'
+	          ),
+	          _react2.default.createElement(
+	            'label',
+	            { htmlFor: 'checkbox' },
+	            'The above information is correct\''
+	          ),
+	          _react2.default.createElement('input', { type: 'checkbox', name: 'confirm' }),
+	          _react2.default.createElement('br', null),
+	          _react2.default.createElement('input', { type: 'submit', name: 'payment' })
 	        )
 	      );
 	    }

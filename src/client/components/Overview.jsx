@@ -14,9 +14,6 @@ export default class Overview extends Component {
           <li><NavLink to="/transactions">View Transaction History</NavLink></li>
           <li><NavLink to="/payment">Make a Payment</NavLink></li>
         </ul>
-
-        {this.props.children}
-
       </div>
     )
   }
