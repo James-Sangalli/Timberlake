@@ -27592,6 +27592,26 @@
 	  }
 
 	  _createClass(Overview, [{
+	    key: 'handleSubmit',
+	    value: function handleSubmit(e) {
+	      e.preventDefault();
+	      // Scroll to the top of the page to show the status message.
+	      // document.getElementById('heading').scrollIntoView();
+	      // this.setState({ type: 'info', message: 'Sending...' }, this.sendFormData);
+	      this.sendFormData();
+	      console.log('you made a payment!!');
+	    }
+	  }, {
+	    key: 'sendFormData',
+	    value: function sendFormData() {
+	      var formData = {
+	        recipient: _react2.default.findDOMNode(this.refs.last_name).value,
+	        amount: _react2.default.findDOMNode(this.refs.amount).value,
+	        confirmed: _react2.default.findDOMNode(this.refs.confirm).value
+	      };
+	      //make XMLHttpRequest()
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -27599,7 +27619,7 @@
 	        { className: 'form-container' },
 	        _react2.default.createElement(
 	          'form',
-	          { method: 'post', action: '/' },
+	          { action: '', onSubmit: this.handleSubmit },
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'form-group' },
@@ -27608,7 +27628,7 @@
 	              { htmlFor: 'last_name' },
 	              'Recipient'
 	            ),
-	            _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'last name', name: 'last_name' })
+	            _react2.default.createElement('input', { type: 'text', className: 'form-control', placeholder: 'last name', name: 'last_name', ref: 'last_name' })
 	          ),
 	          _react2.default.createElement(
 	            'div',
@@ -27618,7 +27638,7 @@
 	              { htmlFor: 'amount' },
 	              'Amount (hours)'
 	            ),
-	            _react2.default.createElement('input', { type: 'amount', className: 'form-control spec', placeholder: '0', name: 'amount' })
+	            _react2.default.createElement('input', { type: 'amount', className: 'form-control spec', placeholder: '0', name: 'amount', ref: 'amount' })
 	          ),
 	          _react2.default.createElement(
 	            'div',
@@ -27626,11 +27646,15 @@
 	            _react2.default.createElement(
 	              'label',
 	              null,
-	              _react2.default.createElement('input', { type: 'checkbox', name: 'confirm' }),
+	              _react2.default.createElement('input', { type: 'checkbox', name: 'confirm', ref: 'confirm' }),
 	              'The above information is correct'
 	            )
 	          ),
-	          _react2.default.createElement('input', { type: 'submit', className: 'btn btn-default', name: 'payment' })
+	          _react2.default.createElement(
+	            'button',
+	            { type: 'submit', className: 'btn btn-default' },
+	            'Submit'
+	          )
 	        )
 	      );
 	    }

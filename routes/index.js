@@ -67,6 +67,4 @@ router.post("/api/users/", function(req, res) {
 
 })
 
-
-
 module.exports = router;
