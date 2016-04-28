@@ -1,5 +1,15 @@
 var express = require('express');
 var router = express.Router();
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('entry');
+});
+
+router.get('/client', function(req, res, next) {
+  res.render('client');
+});
+
 var config = require('../database/knexfile.js')
 var env = process.env.NODE_ENV || 'development'
 // var bcrypt = require('bcrypt')
@@ -42,17 +52,5 @@ router.get("/api/users/", function(req, res) {
     })
 })
 
-// router.get("/sign-in")
-
-
-// Client side rendering
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('entry', { title: 'Express' });
-});
-
-router.get('/client', function(req, res, next) {
-  res.render('client', { title: 'Express' });
-});
 
 module.exports = router;
