@@ -56,9 +56,23 @@
 
 	var _App2 = _interopRequireDefault(_App);
 
+	var _Payment = __webpack_require__(227);
+
+	var _Payment2 = _interopRequireDefault(_Payment);
+
+	var _reactRouter = __webpack_require__(168);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	(0, _reactDom.render)(_react2.default.createElement(_App2.default, null), document.getElementById('main'));
+	(0, _reactDom.render)(_react2.default.createElement(
+	  _reactRouter.Router,
+	  { history: _reactRouter.hashHistory },
+	  _react2.default.createElement(
+	    _reactRouter.Route,
+	    { path: '/', component: _App2.default },
+	    _react2.default.createElement(_reactRouter.Route, { path: '/payment', component: _Payment2.default })
+	  )
+	), document.getElementById('main'));
 
 /***/ },
 /* 1 */
@@ -20039,6 +20053,10 @@
 
 	var _Overview2 = _interopRequireDefault(_Overview);
 
+	var _Transactions = __webpack_require__(228);
+
+	var _Transactions2 = _interopRequireDefault(_Transactions);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -20064,8 +20082,13 @@
 	        null,
 	        _react2.default.createElement(
 	          'div',
-	          { id: 'client' },
-	          _routes2.default
+	          { id: 'overview' },
+	          _react2.default.createElement(_Overview2.default, null)
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { id: 'transactions' },
+	          _react2.default.createElement(_Transactions2.default, null)
 	        )
 	      );
 	    }
@@ -20106,11 +20129,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _react2.default.createElement(
-	  _reactRouter.Router,
-	  null,
-	  _react2.default.createElement(_reactRouter.Route, { path: '/', component: _Overview2.default })
-	);
+	exports.default = _react2.default.createElement(_reactRouter.Router, null);
 
 /***/ },
 /* 168 */

@@ -7,8 +7,8 @@ import Overview from './components/Overview.jsx'
 
 export default (
   <Router>
-    <Route path='/' component={} />
-    {/*<IndexRoute component={Transactions} />
+    {/*<Route path='/' component={} />
+    <IndexRoute component={Transactions} />
     <Route path='/payment' component={Payment} />*/}
   </Router>
 )
