@@ -10,7 +10,7 @@ export default class App extends Component {
       <div>
         <h1>Timeberlake Bank</h1>
         <h2>Login Details</h2>
-        <form method='post' action='/'>
+        <form method='post' action='/api/users'>
           <label htmlFor='last_name'>Last Name</label>
           <input type='text' placeholder='last name' name='last_name'/>
           <label htmlFor='password'>Password</label>
