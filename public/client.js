@@ -20150,11 +20150,16 @@
 	  _createClass(Overview, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      _superagent2.default.get('/api/users/1').end(function (err, res) {
-	        var _JSON$parse$ = JSON.parse(res.text)[0];
-	        var first_name = _JSON$parse$.first_name;
-	        var balance = _JSON$parse$.balance;
+	      console.log('mounted');
+	      _superagent2.default.get('/api/user').end(function (err, res) {
+	        console.log('error', err);
 
+	        var _JSON$parse = JSON.parse(res.text);
+
+	        var first_name = _JSON$parse.first_name;
+	        var balance = _JSON$parse.balance;
+
+	        console.log('first', first_name);
 	        this.setState({ name: first_name, balance: balance });
 	      }.bind(this));
 	    }

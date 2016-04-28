@@ -12,8 +12,11 @@ export default class Overview extends Component {
   }
 
   componentDidMount(){
-    request.get('/api/users/1').end(function(err, res){
-      var { first_name, balance } = JSON.parse(res.text)[0]
+    console.log('mounted')
+    request.get('/api/user').end(function(err, res){
+      console.log('error', err)
+      var { first_name, balance } = JSON.parse(res.text)
+      console.log('first', first_name)
       this.setState({ name: first_name, balance: balance })
     }.bind(this))
 

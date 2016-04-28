@@ -20158,7 +20158,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'a',
-	          { href: 'http://localhost:3000/client' },
+	          { href: '/client' },
 	          'Go to client'
 	        )
 	      );
