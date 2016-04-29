@@ -14,3 +14,10 @@ a {
 .form-container {
   width: 300px;
 }
+
+div.active{
+  display: block;
+}
+dis.hide{
+  display: none;
+}

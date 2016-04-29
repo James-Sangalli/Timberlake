@@ -14,7 +14,6 @@ export default class Transactions extends Component {
     return(
       <div>
         <h2>Transaction Log</h2>
-
       </div>
     )
   }

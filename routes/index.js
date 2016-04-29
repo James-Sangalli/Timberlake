@@ -39,7 +39,7 @@ router.get("/api/getBalance/:id", function(req, res) {
     })
 })
 
-router.get("/api/user/", function(req, res) {
+router.get("/api/user/", function(req, res) {    // users' balance
   if (req.session.userId){
     var userId = req.session.userId
     knex.select('first_name', 'last_name', 'balance').from('users').innerJoin('balances', 'users.id', 'balances.id').where('balances.id', userId)
@@ -52,7 +52,7 @@ router.get("/api/user/", function(req, res) {
   }
 })
 
-router.post("/api/users/", function(req, res) {
+router.post("/api/users/", function(req, res) {    // check user sigin in
   var user = { last_name: req.body.last_name }
   knex('users').where(user).then(function(result){
     var unverifiedUser = result[0]
