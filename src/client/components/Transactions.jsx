@@ -6,22 +6,24 @@ export default class Transactions extends Component {
   constructor(props){
     super(props)
   }
-
-  componentDidMount(){
-    request.get('/api/user/history').end(function(err, res){
-      console.log('error', err)
-      var data = JSON.parse(res.text)
-      this.setState({ transactions: data })
-      console.log("state", this.state)
-    }.bind(this))
-  }
+  // componentDidMount(){
+  //   this.updateLog()
+  // }
+  // updateLog(){
+  //   request.get('/api/user/history').end(function(err, res){
+  //     console.log('error', err)
+  //     var data = JSON.parse(res.text)
+  //     this.setState({ transactions: data })
+  //     console.log("state", this.state)
+  //   }.bind(this))
+  // }
 
   render(){
-    console.log('state at render', this.state)
+    console.log('state at render', this.props)
     return(
       <div>
         <h2>Transaction Log</h2>
-        {this.state? this.state.transactions.map((transaction, i) => {
+        {this.props.logs[0]? this.props.logs.map((transaction, i) => {
           return <Transaction key={i} data={transaction} />
         }) : ''}
 

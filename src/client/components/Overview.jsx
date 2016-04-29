@@ -9,14 +9,21 @@ export default class Overview extends Component {
     this.state = {
       balance: '',
       name: '',
-      view:''
+      view:'',
+      logs:{}
     }
   }
 
-
+  getLogs(){
+    request.get('/api/user/history').end(function(err, res){
+      console.log('error', err)
+      var data = JSON.parse(res.text)
+      this.setState(Object.assign({},this.state,{logs: data}))
+    }.bind(this))
+  }
 
   componentDidMount(){
-    console.log('mounted')
+    this.getLogs()
     request.get('/api/user').end(function(err, res){
       console.log('error', err)
       var { first_name, balance } = JSON.parse(res.text)
@@ -26,6 +33,7 @@ export default class Overview extends Component {
 
   }
   showLogs(){
+    this.getLogs()
     this.setState(Object.assign({},this.state,{view: 'logs'}))
   }
 
@@ -40,8 +48,8 @@ export default class Overview extends Component {
 
     return(
       <div>
-        <h2>Hello {this.state.name}</h2>
-        <h3>Your balance is {this.state.balance}</h3>
+        <h1>Hello {this.state.name}</h1>
+        <h3>Your balance is </h3><h2>$ {this.state.balance}</h2>
         <h4>Would you like to:</h4>
         <button className='btn btn-default' onClick={this.showLogs.bind(this)}>View Transaction History</button>
         <button className='btn btn-primary' onClick={this.showForm.bind(this)}>Make a Payment</button>
@@ -49,7 +57,7 @@ export default class Overview extends Component {
           <Payment handleTransition={this.handleTransition.bind(this)}/>
         </div>
         <div className={this.state.view=='logs'? "active": 'hide'}>
-          <Transactions />
+          <Transactions logs={this.state.logs}/>
         </div>
       </div>
     )

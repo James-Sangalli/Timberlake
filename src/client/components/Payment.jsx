@@ -12,9 +12,11 @@ export default class Overview extends Component {
            .send(formData)
            .end(()=>{
              this.props.handleTransition(formData.amount)
-             console.log('done transaction')
+             this.refs.last_name.value=''
+             this.refs.amount.value=0
            })
   }
+
 
   render(){
     console.log('this is fn',this.refs.last_name)

@@ -14998,7 +14998,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @typechecks
-	 *
+	 * 
 	 */
 
 	/*eslint-disable no-self-compare */
@@ -20146,15 +20146,25 @@
 	    _this.state = {
 	      balance: '',
 	      name: '',
-	      view: ''
+	      view: '',
+	      logs: {}
 	    };
 	    return _this;
 	  }
 
 	  _createClass(Overview, [{
+	    key: 'getLogs',
+	    value: function getLogs() {
+	      _superagent2.default.get('/api/user/history').end(function (err, res) {
+	        console.log('error', err);
+	        var data = JSON.parse(res.text);
+	        this.setState(Object.assign({}, this.state, { logs: data }));
+	      }.bind(this));
+	    }
+	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      console.log('mounted');
+	      this.getLogs();
 	      _superagent2.default.get('/api/user').end(function (err, res) {
 	        console.log('error', err);
 
@@ -20170,6 +20180,7 @@
 	  }, {
 	    key: 'showLogs',
 	    value: function showLogs() {
+	      this.getLogs();
 	      this.setState(Object.assign({}, this.state, { view: 'logs' }));
 	    }
 	  }, {
@@ -20190,7 +20201,7 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(
-	          'h2',
+	          'h1',
 	          null,
 	          'Hello ',
 	          this.state.name
@@ -20198,7 +20209,12 @@
 	        _react2.default.createElement(
 	          'h3',
 	          null,
-	          'Your balance is ',
+	          'Your balance is '
+	        ),
+	        _react2.default.createElement(
+	          'h2',
+	          null,
+	          '$ ',
 	          this.state.balance
 	        ),
 	        _react2.default.createElement(
@@ -20224,7 +20240,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: this.state.view == 'logs' ? "active" : 'hide' },
-	          _react2.default.createElement(_Transactions2.default, null)
+	          _react2.default.createElement(_Transactions2.default, { logs: this.state.logs })
 	        )
 	      );
 	    }
@@ -20822,7 +20838,7 @@
 	};
 
 	/**
-	 * Set responseType to `val`. Presently valid responseTypes are 'blob' and
+	 * Set responseType to `val`. Presently valid responseTypes are 'blob' and 
 	 * 'arraybuffer'.
 	 *
 	 * Examples:
@@ -21322,7 +21338,7 @@
 /* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
-
+	
 	/**
 	 * Expose `Emitter`.
 	 */
@@ -21491,7 +21507,7 @@
 /* 170 */
 /***/ function(module, exports) {
 
-
+	
 	/**
 	 * Reduce `arr` with `fn`.
 	 *
@@ -21502,7 +21518,7 @@
 	 * TODO: combatible error handling?
 	 */
 
-	module.exports = function(arr, fn, initial){
+	module.exports = function(arr, fn, initial){  
 	  var idx = 0;
 	  var len = arr.length;
 	  var curr = arguments.length == 3
@@ -21512,7 +21528,7 @@
 	  while (idx < len) {
 	    curr = fn.call(null, curr, arr[idx], ++idx, arr);
 	  }
-
+	  
 	  return curr;
 	};
 
@@ -21980,7 +21996,7 @@
 	 * nested.
 	 *
 	 *   import { Route, createRoutesFromReactChildren } from 'react-router'
-	 *
+	 *   
 	 *   const routes = createRoutesFromReactChildren(
 	 *     <Route component={App}>
 	 *       <Route path="home" component={Dashboard}/>
@@ -27286,21 +27302,22 @@
 
 	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Transactions).call(this, props));
 	  }
+	  // componentDidMount(){
+	  //   this.updateLog()
+	  // }
+	  // updateLog(){
+	  //   request.get('/api/user/history').end(function(err, res){
+	  //     console.log('error', err)
+	  //     var data = JSON.parse(res.text)
+	  //     this.setState({ transactions: data })
+	  //     console.log("state", this.state)
+	  //   }.bind(this))
+	  // }
 
 	  _createClass(Transactions, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      _superagent2.default.get('/api/user/history').end(function (err, res) {
-	        console.log('error', err);
-	        var data = JSON.parse(res.text);
-	        this.setState({ transactions: data });
-	        console.log("state", this.state);
-	      }.bind(this));
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log('state at render', this.state);
+	      console.log('state at render', this.props);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -27309,7 +27326,7 @@
 	          null,
 	          'Transaction Log'
 	        ),
-	        this.state ? this.state.transactions.map(function (transaction, i) {
+	        this.props.logs[0] ? this.props.logs.map(function (transaction, i) {
 	          return _react2.default.createElement(_Transaction2.default, { key: i, data: transaction });
 	        }) : ''
 	      );
@@ -27370,7 +27387,8 @@
 	      };
 	      _superagent2.default.post('/users/transaction').send(formData).end(function () {
 	        _this2.props.handleTransition(formData.amount);
-	        console.log('done transaction');
+	        _this2.refs.last_name.value = '';
+	        _this2.refs.amount.value = 0;
 	      });
 	    }
 	  }, {

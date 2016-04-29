@@ -57,7 +57,8 @@ router.get("/api/user/history", function(req, res) {
   console.log(req.session.userId)
   if (req.session.userId){
     var userId = req.session.userId
-    knex.select().table('history').where('UserID', userId)
+    knex.select().table('history').where('UserID', userId).orderBy('id', 'desc')
+
       .then(function(resp) {
         res.send(resp);
       })
