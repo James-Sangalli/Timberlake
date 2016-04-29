@@ -14998,7 +14998,7 @@
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @typechecks
-	 * 
+	 *
 	 */
 
 	/*eslint-disable no-self-compare */
@@ -20822,7 +20822,7 @@
 	};
 
 	/**
-	 * Set responseType to `val`. Presently valid responseTypes are 'blob' and 
+	 * Set responseType to `val`. Presently valid responseTypes are 'blob' and
 	 * 'arraybuffer'.
 	 *
 	 * Examples:
@@ -21322,7 +21322,7 @@
 /* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
+
 	/**
 	 * Expose `Emitter`.
 	 */
@@ -21491,7 +21491,7 @@
 /* 170 */
 /***/ function(module, exports) {
 
-	
+
 	/**
 	 * Reduce `arr` with `fn`.
 	 *
@@ -21502,7 +21502,7 @@
 	 * TODO: combatible error handling?
 	 */
 
-	module.exports = function(arr, fn, initial){  
+	module.exports = function(arr, fn, initial){
 	  var idx = 0;
 	  var len = arr.length;
 	  var curr = arguments.length == 3
@@ -21512,7 +21512,7 @@
 	  while (idx < len) {
 	    curr = fn.call(null, curr, arr[idx], ++idx, arr);
 	  }
-	  
+
 	  return curr;
 	};
 
@@ -21980,7 +21980,7 @@
 	 * nested.
 	 *
 	 *   import { Route, createRoutesFromReactChildren } from 'react-router'
-	 *   
+	 *
 	 *   const routes = createRoutesFromReactChildren(
 	 *     <Route component={App}>
 	 *       <Route path="home" component={Dashboard}/>
@@ -27266,6 +27266,10 @@
 
 	var _superagent2 = _interopRequireDefault(_superagent);
 
+	var _Transaction = __webpack_require__(239);
+
+	var _Transaction2 = _interopRequireDefault(_Transaction);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -27285,10 +27289,18 @@
 
 	  _createClass(Transactions, [{
 	    key: 'componentDidMount',
-	    value: function componentDidMount() {}
+	    value: function componentDidMount() {
+	      _superagent2.default.get('/api/user/history').end(function (err, res) {
+	        console.log('error', err);
+	        var data = JSON.parse(res.text);
+	        this.setState({ transactions: data });
+	        console.log("state", this.state);
+	      }.bind(this));
+	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      console.log('state at render', this.state);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -27296,7 +27308,10 @@
 	          'h2',
 	          null,
 	          'Transaction Log'
-	        )
+	        ),
+	        this.state ? this.state.transactions.map(function (transaction, i) {
+	          return _react2.default.createElement(_Transaction2.default, { key: i, data: transaction });
+	        }) : ''
 	      );
 	    }
 	  }]);
@@ -27408,6 +27423,73 @@
 	}(_react.Component);
 
 	exports.default = Overview;
+
+/***/ },
+/* 238 */,
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _superagent = __webpack_require__(168);
+
+	var _superagent2 = _interopRequireDefault(_superagent);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Transaction = function (_Component) {
+	  _inherits(Transaction, _Component);
+
+	  function Transaction(props) {
+	    _classCallCheck(this, Transaction);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Transaction).call(this, props));
+	  }
+
+	  _createClass(Transaction, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {}
+	  }, {
+	    key: 'render',
+	    value: function render() {
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          this.props.data.payee
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          this.props.data.transaction
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Transaction;
+	}(_react.Component);
+
+	exports.default = Transaction;
 
 /***/ }
 /******/ ]);

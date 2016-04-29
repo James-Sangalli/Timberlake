@@ -52,7 +52,22 @@ router.get("/api/user/", function(req, res) {    // users' balance
   }
 })
 
-router.post("/api/users/", function(req, res) {    // check user sigin in
+
+router.get("/api/user/history", function(req, res) {
+  console.log(req.session.userId)
+  if (req.session.userId){
+    var userId = req.session.userId
+    knex.select().table('history').where('UserID', userId)
+      .then(function(resp) {
+        res.send(resp);
+      })
+  } else {
+    console.log('AUTH FAIL')
+    res.send("AUTHORISATION ERROR!")
+  }
+})
+
+router.post("/api/users/", function(req, res) {
   var user = { last_name: req.body.last_name }
   knex('users').where(user).then(function(result){
     var unverifiedUser = result[0]
