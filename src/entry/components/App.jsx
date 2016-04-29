@@ -18,7 +18,7 @@ export default class App extends Component {
           <input type='submit' name='login'/>
         </form>
         <button>Register</button>
-        <a href='http://localhost:3000/client'>Go to client</a>
+        <a href='/client'>Go to client</a>
       </div>
     )
   }

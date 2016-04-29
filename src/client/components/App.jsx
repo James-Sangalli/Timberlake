@@ -13,7 +13,6 @@ export default class Client extends Component {
       <div className='container'>
         <div id='overview'>
           <Overview />
-          {this.props.children}
         </div>
       </div>
     )
