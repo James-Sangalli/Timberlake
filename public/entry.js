@@ -52,7 +52,7 @@
 
 	var _reactDom = __webpack_require__(32);
 
-	var _App = __webpack_require__(236);
+	var _App = __webpack_require__(238);
 
 	var _App2 = _interopRequireDefault(_App);
 
@@ -20086,7 +20086,9 @@
 /* 233 */,
 /* 234 */,
 /* 235 */,
-/* 236 */
+/* 236 */,
+/* 237 */,
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20158,7 +20160,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'a',
-	          { href: 'http://localhost:3000/client' },
+	          { href: '/client' },
 	          'Go to client'
 	        )
 	      );
